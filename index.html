@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121519">
+  <meta name="description" content="Sol³ accelerates video diffusion through training-free hierarchical sparse attention routing. Explore the method and six paired video comparisons.">
+  <title>Sol³ · Hierarchical Sparse Attention Routing</title>
+  <link rel="stylesheet" href="site.css">
+  <script defer src="site.js"></script>
+</head>
+<body>
+  <header class="hero" id="top">
+    <canvas class="hero-backdrop" width="640" height="180" aria-hidden="true"></canvas>
+    <nav class="mast" aria-label="Page sections">
+      <a class="wordmark" href="#top" aria-label="Sol³ home">Sol³</a>
+      <div><a href="#method">TL;DR</a><a href="#comparisons">Comparisons</a><a href="#citation">Citation</a></div>
+    </nav>
+    <div class="intro">
+      <h1><span class="method-name">Sol<sup>3</sup></span><span class="paper-title">Accelerating Video Diffusion for Free via Hierarchical Sparse Attention Routing</span></h1>
+      <div class="authors" aria-label="Authors">
+        <div><span>Guoxin Fan<sup>1,2,*</sup></span> <span>Weilun Feng<sup>1,2,*</sup></span> <span>Chuanguang Yang<sup>1,†</sup></span> <span>Mingqiang Wu<sup>1,2</sup></span> <span>Xiaokun Liu<sup>1,2</sup></span></div>
+        <div><span>Jitao Lu<sup>1,2</sup></span> <span>Zhulin An<sup>1</sup></span> <span>Libo Huang<sup>1</sup></span> <span>Boyu Diao<sup>1</sup></span> <span>Di Gao<sup>3</sup></span> <span>Yongjun Xu<sup>1,4</sup></span></div>
+      </div>
+      <details class="affiliations">
+        <summary>Institute of Computing Technology, Chinese Academy of Sciences</summary>
+        <div class="affiliation-list">
+          <ol><li>State Key Laboratory of AI Safety, Institute of Computing Technology, Chinese Academy of Sciences</li><li>University of Chinese Academy of Sciences</li><li>Hangzhou Institute for Advanced Study, University of the Chinese Academy of Sciences</li><li>Xiamen Institute of Data Intelligence, Xiamen, China</li></ol>
+          <p>* Equal contribution. &nbsp; † Corresponding author.</p>
+        </div>
+      </details>
+    </div>
+    <div class="screen">
+      <video id="hero-video" muted playsinline preload="metadata" poster="media/wan06.jpg" aria-label="Dense and Sol³ paired video"></video>
+      <span class="film-label label-dense">Dense</span><span class="film-label label-sol">Sol³</span>
+      <button type="button" class="play-toggle" id="hero-play" aria-label="Pause showcase" title="Pause showcase">Ⅱ</button>
+    </div>
+    <div class="bench"><div class="bench-inner">
+      <p class="metric-heading">Attention speedup <span>(denoise speedup) vs. Dense</span></p>
+      <div id="model-strip" aria-label="Select showcase model"></div>
+    </div></div>
+  </header>
+  <main>
+    <section id="method" aria-labelledby="method-title"><div class="section-inner">
+      <h2 id="method-title">TL;DR</h2>
+      <p class="instruction method-summary">Sol³ is a training-free method for accelerating attention in video diffusion models. It computes attention exactly for entire high-scoring blocks and for selected tokens in harder-to-approximate blocks, while representing the remaining tokens with block summaries.</p>
+      <iframe id="routing" src="method.html" loading="lazy" title="Interactive Sol³ routing animation"></iframe>
+    </div></section>
+    <section class="comparisons" id="comparisons" aria-labelledby="comparison-title">
+      <div class="section-inner">
+        <h2 id="comparison-title">Visual Comparisons</h2>
+        <div id="gallery"></div>
+      </div>
+    </section>
+    <section class="citation section-inner" id="citation" aria-labelledby="citation-title"><h2 id="citation-title">Citation</h2></section>
+  </main>
+</body>
+</html>
