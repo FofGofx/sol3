@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sol3-attn"
+version = "0.1.0"
+description = "Sol3 sparse attention for NVIDIA SM80 and SM120"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.5.1", "triton>=3.1"]
+license = "Apache-2.0"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+
+[project.optional-dependencies]
+sm80 = ["flashinfer-python==0.3.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sol3_attn*"]

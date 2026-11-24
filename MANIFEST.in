@@ -1,0 +1,3 @@
+include assets/method.png
+recursive-include integrations *.py *.md
+recursive-include examples *.py
