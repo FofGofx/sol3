@@ -14,10 +14,9 @@
 </p>
 
 <p align="center">
-  <a href="https://fofgofx.github.io/sol3/">🌐 Project Page</a> &nbsp;·&nbsp;
-  <a href="#quick-start">🚀 Quick Start</a> &nbsp;·&nbsp;
-  <a href="integrations/README.md">🧩 Integration Guide</a> &nbsp;·&nbsp;
-  <a href="LICENSE">📄 Apache 2.0</a>
+  <a href="https://fofgofx.github.io/sol3/"><img src="https://img.shields.io/badge/Project_Page-Sol%C2%B3-76b900?style=flat-square" alt="Project Page: Sol³"></a>
+  <a href="https://arxiv.org/abs/2611.32562"><img src="https://img.shields.io/badge/arXiv-2611.32562-b31b1b?style=flat-square" alt="arXiv: 2611.32562"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-green?style=flat-square" alt="License: Apache 2.0"></a>
 </p>
 
 <p align="center">
@@ -146,11 +145,13 @@ We thank the authors of [Sol-Attn](https://github.com/NVlabs/Sana/tree/sol-engin
 If you use Sol³ in your research, please cite our work.
 
 ```bibtex
-@misc{fan2026sol3,
-  title  = {{Sol}$^{3}$: Accelerating Video Diffusion for Free via Hierarchical Sparse Attention Routing},
-  author = {Fan, Guoxin and Feng, Weilun and Yang, Chuanguang and Wu, Mingqiang
-            and Liu, Xiaokun and Lu, Jitao and An, Zhulin and Huang, Libo
-            and Diao, Boyu and Gao, Di and Xu, Yongjun},
-  year   = {2026}
+@misc{fan2026sol3acceleratingvideodiffusion,
+      title={Sol$^{3}$: Accelerating Video Diffusion for Free via Hierarchical Sparse Attention Routing},
+      author={Guoxin Fan and Weilun Feng and Chuanguang Yang and Mingqiang Wu and Xiaokun Liu and Jitao Lu and Zhulin An and Libo Huang and Boyu Diao and Di Gao and Yongjun Xu},
+      year={2026},
+      eprint={2611.32562},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2611.32562},
 }
 ```

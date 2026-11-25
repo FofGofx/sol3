@@ -321,3 +321,17 @@ document.addEventListener("visibilitychange", () => {
   notifyMethod();
   for (const card of cards.values()) card.updatePlayback();
 });
+
+const copyBibtex = document.getElementById("copy-bibtex");
+if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+  copyBibtex.hidden = false;
+  copyBibtex.addEventListener("click", async () => {
+    const status = document.getElementById("copy-status");
+    try {
+      await navigator.clipboard.writeText(document.getElementById("bibtex").textContent);
+      status.textContent = "BibTeX copied.";
+    } catch {
+      status.textContent = "Select the citation and copy it manually.";
+    }
+  });
+}
