@@ -19,6 +19,10 @@ The examples plug into an initialized model. For `target`, pass a pair such as `
 
 ### Connecting an existing sparse callable
 
+If the host already supplies a routing configuration, pass it through. When adding a sparse branch to a new host, call `get_preset(profile)` from `sol3_attn` once during setup. Each call returns a fresh copy. Use `preset["kernel_config"]` as the operator configuration. Read `preset["host_policy"]` in the denoiser to select the eligible stage, initial dense steps and protected blocks. Block indices are zero-based. HunyuanVideo uses indices 0 and 20 in the combined double- and single-block sequence.
+
+Compute conditioning positions and lengths from the current token layout.
+
 Pass the module or instance and the name of the sparse callable that the model invokes. For example, in a Wan host whose `controller.sparse_attention(q, k, v, cfg=...)` already receives the model's routing configuration, use the following scope around generation.
 
 ```python

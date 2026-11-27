@@ -40,6 +40,9 @@
 - An NVIDIA GPU with compute capability 8.0 (SM80) or 12.0 (SM120)
 - FlashInfer 0.3.1 for SM80, installed by the `sm80` extra below
 
+We tested the standalone operator on NVIDIA A800 (SM80) with PyTorch 2.5.1+cu124, Triton 3.1.0, and FlashInfer 0.3.1.
+On NVIDIA RTX PRO 6000 Blackwell (SM120), we tested with PyTorch 2.10.0+cu128 and Triton 3.6.0.
+
 ### 📦 Installation
 
 Install a CUDA-enabled PyTorch build compatible with your GPU and driver. From the root of this repository, run the command for your GPU.
@@ -109,14 +112,26 @@ Install the core package in the model’s inference environment. The six adapter
 export PYTHONPATH="$PWD/integrations${PYTHONPATH:+:$PYTHONPATH}"
 ```
 
-| Model | GPU architecture | Where Sol³ runs |
-| --- | --- | --- |
-| [Wan2.2](integrations/sol3_integrations/wan22.py) | SM80 | Video self-attention in both high- and low-noise experts |
-| [HunyuanVideo](integrations/sol3_integrations/hunyuan_video.py) | SM80 | Joint attention with a protected text suffix |
-| [SANA-WM](integrations/sol3_integrations/sana_wm.py) | SM80 | Stage 2 Refiner video attention, preserving the native anchor |
-| [LTX-2.5](integrations/sol3_integrations/ltx25.py) | SM80 | Stage 1 video self-attention after the model’s capacity check |
-| [H3-Base](integrations/sol3_integrations/h3_base.py) | SM80 | Joint attention with a protected conditioning prefix |
-| [FastH3](integrations/sol3_integrations/fasth3.py) | SM120 | Joint attention with protected text and audio prefixes |
+| Model | Preset | GPU architecture | Where Sol³ runs |
+| --- | --- | --- | --- |
+| [Wan2.2](integrations/sol3_integrations/wan22.py) | `wan` | SM80 | Video self-attention in both high- and low-noise experts |
+| [HunyuanVideo](integrations/sol3_integrations/hunyuan_video.py) | `hy` | SM80 | Joint attention with a protected text suffix |
+| [SANA-WM](integrations/sol3_integrations/sana_wm.py) | `sana` | SM80 | Stage 2 Refiner video attention, preserving the native anchor |
+| [LTX-2.5](integrations/sol3_integrations/ltx25.py) | `ltx` | SM80 | Stage 1 video self-attention after the model’s capacity check |
+| [H3-Base](integrations/sol3_integrations/h3_base.py) | `h3` | SM80 | Joint attention with a protected conditioning prefix |
+| [FastH3](integrations/sol3_integrations/fasth3.py) | `fast` | SM120 | Joint attention with protected text and audio prefixes |
+
+Use `get_preset` when your host needs a reference configuration. For H3-Base, load it once and pass the conditioning prefix length from the current input on each sparse call.
+
+```python
+from sol3_attn import get_preset, sol3_attn_with_route
+
+preset = get_preset("h3")
+out, route = sol3_attn_with_route(
+    q, k, v, profile="h3", config=preset["kernel_config"],
+    sink_start=0, sink_tokens=prefix_tokens, dense=dense_attention,
+)
+```
 
 The host model controls dense warmup, layer selection, token layout and masking. The [integration guide](integrations/README.md) shows how to attach an adapter to an existing sparse attention call and verify that the model used it during generation.
 

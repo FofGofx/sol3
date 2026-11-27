@@ -1,6 +1,13 @@
 """Enable Sol³ around Wan2.2 generation with a shared sparse attention target."""
 
+from functools import partial
+
+from sol3_attn import get_preset
 from sol3_integrations import wan22
+
+
+# For hosts that need to construct their own sparse attention callable.
+sparse_attention = partial(wan22.attention, cfg=get_preset("wan")["kernel_config"])
 
 
 def generate(pipeline, target, *args, application=None, release_points=(), fusion_modules=(), **kwargs):

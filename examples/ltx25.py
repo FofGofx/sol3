@@ -1,6 +1,13 @@
 """Connect workspace release to a two-stage LTX pipeline."""
 
+from functools import partial
+
+from sol3_attn import get_preset
 from sol3_integrations import ltx25
+
+
+# For hosts that need to construct their own sparse attention callable.
+sparse_attention = partial(ltx25.attention, cfg=get_preset("ltx")["kernel_config"])
 
 
 def generate(entry, runner, *args, release_points=(), fusion_modules=(), **kwargs):
