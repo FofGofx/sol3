@@ -27,7 +27,8 @@
 
 ## 🔥 News
 
-- **November 2026** · Sol³ v0.1.0 includes the standalone attention operator and source integrations for six models.
+- **[2026/11/28]** Added a ComfyUI integration for MiniMax H3 with a single-phase pi-H3 example workflow. [Install Sol³ from source](#quick-start) in the Python environment used by ComfyUI, then follow the [ComfyUI setup guide](integrations/comfyui/README.md).
+- **[2026/11/24]** Sol³ v0.1.0 includes the standalone attention operator and source integrations for six models.
 
 <a id="quick-start"></a>
 
@@ -137,7 +138,7 @@ The host model controls dense warmup, layer selection, token layout and masking.
 
 ## ✅ To-do
 
-- [ ] Integrate Sol³ into ComfyUI.
+- [x] Add ComfyUI integration for MiniMax H3.
 
 ## ⭐ Star History
 
@@ -154,6 +155,8 @@ The host model controls dense warmup, layer selection, token layout and masking.
 ## 🤝 Acknowledgements
 
 We thank the authors of [Sol-Attn](https://github.com/NVlabs/Sana/tree/sol-engine/techniques/sparse_backends) and [PISA](https://github.com/xie-lab-ml/piecewise-sparse-attention) for their work on efficient attention. We also thank the teams behind [Wan2.2](https://github.com/Wan-Video/Wan2.2), [H3-Base](https://github.com/MiniMax-AI/MiniMax-H3), [SANA-WM](https://github.com/NVlabs/Sana/blob/main/docs/sana_wm.md), [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo), [LTX-2.5](https://huggingface.co/Lightricks/LTX-2.5) and [FastH3](https://haoailab.com/blogs/fasth3-preview/) for sharing their models and code.
+
+We thank [@asifswork](https://github.com/asifswork) for contributing the Sol³ ComfyUI integration for MiniMax H3, including a single-phase pi-H3 example workflow.
 
 ## 📝 Citation
 
